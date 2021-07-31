@@ -3,7 +3,7 @@
  * @Autor: Pony
  * @Date: 2021-07-18 13:40:13
  * @LastEditors: Pony
- * @LastEditTime: 2021-07-31 13:28:42
+ * @LastEditTime: 2021-07-31 14:21:38
  */
 import Snake from "./Snake";
 import Food from "./Food";
@@ -104,7 +104,7 @@ class GameControl {
      */    
     checkEatFood(x:number,y:number){
         if(x===this.food.X&&y===this.food.Y){
-            this.food.changePlace()//重置食物的位置
+            this.food.changePlace(this.snake.bodies)//重置食物的位置
             this.scorePanel.addScore() //分数增加 1
             this.snake.addBody()// 蛇的身体增加一节
         }

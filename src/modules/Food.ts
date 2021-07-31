@@ -3,7 +3,7 @@
  * @Autor: Pony
  * @Date: 2021-07-18 13:40:13
  * @LastEditors: Pony
- * @LastEditTime: 2021-07-25 17:08:50
+ * @LastEditTime: 2021-07-31 14:20:55
  */
 class Food {
 
@@ -20,13 +20,38 @@ class Food {
     get Y() {
         return this._element.offsetTop
     }
-    //修改食物的位置
-    changePlace() {
-        //区域最大值为300
+    /**
+     * @description: 修改食物的位置
+     * @param {HTMLCollection} snakeBody  蛇的身体
+     * @return {*}
+     */
+    changePlace(snakeBody: HTMLCollection) {
+
+        /**
+         * 食物坐标不能生成在食物上
+         * 区域最大值为300
+         */
         const left = Math.floor(Math.random() * 30) * 10 //X
         const top = Math.floor(Math.random() * 30) * 10 //Y
-        this._element.style.left = `${left}px`;
-        this._element.style.top = `${top}px`
+
+        let isSameMake: boolean = false//是否在食物上
+
+        for (let index = 0; index < snakeBody.length; index++) {
+            const element = <HTMLElement>snakeBody[index];
+
+            if (left === element.offsetLeft && top === element.offsetTop) {
+                isSameMake = true
+            }
+        }
+
+        if (isSameMake) {
+            this.changePlace(snakeBody)
+        } else {
+
+            this._element.style.left = `${left}px`;
+            this._element.style.top = `${top}px`
+        }
+
     }
 
 

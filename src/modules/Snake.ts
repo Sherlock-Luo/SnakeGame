@@ -3,7 +3,7 @@
  * @Autor: Pony
  * @Date: 2021-07-18 13:40:13
  * @LastEditors: Pony
- * @LastEditTime: 2021-07-31 13:45:36
+ * @LastEditTime: 2021-07-31 14:14:28
  */
 class Snake {
     element: HTMLElement //容器
